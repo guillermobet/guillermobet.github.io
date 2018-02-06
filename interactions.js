@@ -4,6 +4,6 @@ $(document).ready(function() {
 
 function runQuery() {
 	var query = $('input[name=query]:checked').val();
-	var method = $('input[name=method]:checked').val();
+	var method = $('input[name=engine]:checked').val();
 	console.log(query + " " + method);
 }
