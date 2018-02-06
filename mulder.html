@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<!-- Required meta tags -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+		<link rel="stylesheet" type="text/css" href="style.css">
+
+		<script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+		<script src="https://d3js.org/d3.v3.min.js"></script>	
+		<script type="text/javascript" src="interactions.js"></script>
+	</head>
+	
+	<body>
+		<div class='container'>
+			<h2>Select a SPARQL query and an engine</h2>
+		</div>
+		<div id="querySelector" class="container">
+			<form id='queryForm'>
+				<label for="SQ1" class="radio inline">
+					<input name="query" type="radio" value='SQ1'>
+					<span> Query 1 &nbsp;&nbsp;</span>
+				</label>
+
+				<label for="SQ2" class="radio inline">
+					<input name="query" type="radio" value='SQ2'>
+					<span> Query 2 &nbsp;&nbsp;</span> 
+				</label>
+
+				<label for="SQ3" class="radio inline">
+				<input name="query" type="radio" value='SQ3'>
+				<span> Query 3 &nbsp;&nbsp;</span>
+				</label>
+
+				<label for="SQ4" class="radio inline">
+				<input name="query" type="radio" value='SQ4'>
+				<span> Query 4 &nbsp;&nbsp;</span> 
+				</label>
+
+				<label for="SQ5" class="radio inline">
+				<input name="query" type="radio" value='SQ5'>
+				<span> Query 5 &nbsp;&nbsp;</span> 
+				</label>
+
+				<label for="SQ6" class="radio inline">
+				<input name="query" type="radio" value='SQ6'>
+				<span> Query 6 &nbsp;&nbsp;</span>
+				</label>
+			</form>
+		</div>
+		<br>
+		<div class='container'>
+			<form id='engineForm'>
+				<label for="MULDER" class="radio inline">
+				<input name="engine" type="radio" value='MULDER'>
+				<span> Mulder &nbsp;&nbsp;</span>
+				</label>
+
+				<label for="FedX" class="radio inline">
+				<input name="engine" type="radio" value='FedX'>
+				<span> FedX &nbsp;&nbsp;</span>
+				</label>
+			</form>
+		</div>
+		<br>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4">
+					<div class="card">
+						<div class="container card-block">
+							<h4 class="card-title">SPARQL query</h4>
+							<div>
+								<p class="card-text">foo <br> bar <br> baz <br> doo </p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<br>
+		<br>
+		<div class='container'>
+			<button type='button' name='runQuery' class='btn btn-default' onclick='runQuery()'>
+				Run query
+			</button>
+		</div>
+	</body>
+</html>
