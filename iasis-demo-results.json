@@ -1,0 +1,314 @@
+[
+{
+	"queryName": "SQ1",
+	"query": "PREFIX drugcategory: <http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugcategory/> <br> PREFIX drugbank: <http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/> <br> PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> <br>PREFIX kegg: <http://bio2rdf.org/ns/kegg#> <br>	SELECT ?drugDesc ?cpd ?equation WHERE {<br>		?drug drugbank:drugCategory drugcategory:cathartics .<br>		?drug drugbank:keggCompoundId ?cpd .<br>		?drug drugbank:description ?drugDesc .<br>		?enzyme kegg:xSubstrate ?cpd .<br>		?enzyme	rdf:type kegg:Enzyme .<br>		?reaction kegg:xEnzyme ?enzyme .<br>		?reaction kegg:equation ?equation .	<br>}",
+	"results": {
+		"FedX": {
+			"decomposition": [
+				{
+					"triple": "?drug drugbank:drugCategory drugcategory:cathartics",
+					"source": ["Drugbank"]
+				},
+				{
+					"triple": "?drug drugbank:keggCompoundId ?cpd",
+					"source": ["Drugbank"]
+				},
+				{
+					"triple": "?drug drugbank:description ?drugDesc",
+					"source": ["Drugbank"]
+				},
+				{
+					"triple": "?enzyme kegg:xSubstrate ?cpd",
+					"source": ["Kegg"]
+				},{
+					"triple": "?enzyme	rdf:type kegg:Enzyme",
+					"source": ["Kegg"]
+				},
+				{
+					"triple": "?reaction kegg:xEnzyme ?enzyme",
+					"source": ["Kegg"]
+				},
+				{
+					"triple": "?reaction kegg:equation ?equation",
+					"source": ["Kegg"]
+				}
+
+				],
+			"executiontime": "1.09071087837",
+            "cardinality": "3"
+			},
+		"MULDER": {
+			"decomposition": [
+				{
+					"triple": "?drug drugbank:drugCategory drugcategory:cathartics",
+					"source": ["Drugbank"]
+				},
+				{
+					"triple": "?drug drugbank:keggCompoundId ?cpd",
+					"source": ["Drugbank"]
+				},
+				{
+					"triple": "?drug drugbank:description ?drugDesc",
+					"source": ["Drugbank"]
+				},
+				{
+					"triple": "?enzyme kegg:xSubstrate ?cpd",
+					"source": ["Kegg"]
+				},{
+					"triple": "?enzyme	rdf:type kegg:Enzyme",
+					"source": ["Kegg"]
+				},
+				{
+					"triple": "?reaction kegg:xEnzyme ?enzyme",
+					"source": ["Kegg"]
+				},
+				{
+					"triple": "?reaction kegg:equation ?equation",
+					"source": ["Kegg"]
+				}
+
+				],
+			"executiontime": "0.0484898090363",
+            "cardinality": "3"
+		}
+	}
+},
+{
+	"queryName": "SQ2",
+	"query": "PREFIX drugbank: <http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/> <br> PREFIX drugcategory: <http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugcategory/><br> PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#><br>PREFIX bio2RDF: <http://bio2rdf.org/ns/bio2rdf#><br> PREFIX purl: <http://purl.org/dc/elements/1.1/><br> PREFIX kegg: <http://bio2rdf.org/ns/kegg#><br> SELECT distinct ?drug ?title WHERE {<br>?drug drugbank:drugCategory drugcategory:micronutrient .<br>?drug drugbank:casRegistryNumber ?id .<br>?keggDrug rdf:type kegg:Drug .<br>?keggDrug bio2RDF:xRef ?id .<br>?keggDrug purl:title ?title .<br>}",
+	"results": {
+		"FedX": {
+			"decomposition": [
+				{
+					"triple": "?drug drugbank:drugCategory drugcategory:micronutrient",
+					"source": ["Drugbank"]
+				},
+				{
+					"triple": "?drug drugbank:casRegistryNumber ?id",
+					"source": ["Drugbank"]
+				},
+				{
+					"triple": "?keggDrug rdf:type kegg:Drug",
+					"source": ["Kegg"]
+				},
+				{
+					"triple": "?keggDrug bio2RDF:xRef ?id",
+					"source": ["Kegg", "Chebi"]
+				},
+                {
+					"triple": "?keggDrug purl:title ?title",
+					"source": ["Kegg", "Chebi"]
+				}
+				],
+			"executiontime": "130.962049007",
+            "cardinality": "24"
+			},
+		"MULDER": {
+			"decomposition": [
+				{
+					"triple": "?drug drugbank:drugCategory drugcategory:micronutrient",
+					"source": ["Drugbank"]
+				},
+				{
+					"triple": "?drug drugbank:casRegistryNumber ?id",
+					"source": ["Drugbank"]
+				},
+				{
+					"triple": "?keggDrug rdf:type kegg:Drug",
+					"source": ["Kegg"]
+				},
+				{
+					"triple": "?keggDrug bio2RDF:xRef ?id",
+					"source": ["Kegg"]
+				},
+                {
+					"triple": "?keggDrug purl:title ?title",
+					"source": ["Kegg"]
+				}
+				],
+			"executiontime": "0.0750548839569",
+            "cardinality": "28"
+		}
+	}
+},
+{
+	"queryName": "SQ3",
+	"query": "PREFIX drugbank: <http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/><br>PREFIX bio2RDF: <http://bio2rdf.org/ns/bio2rdf#><br> SELECT * WHERE{<br>?drug drugbank:affectedOrganism  'Humans and other mammals'.<br>?drug drugbank:casRegistryNumber ?cas .<br>?keggDrug bio2RDF:xRef ?cas .<br>?keggDrug bio2RDF:mass ?mass .<br>OPTIONAL{ <br>?drug drugbank:biotransformation ?transform <br>}<br>}",
+	"results": {
+		"FedX": {
+			"decomposition": [
+				{
+					"triple": "?drug drugbank:affectedOrganism  'Humans and other mammals'.",
+					"source": ["Drugbank"]
+				},
+				{
+					"triple": "?drug drugbank:casRegistryNumber ?cas",
+					"source": ["Drugbank"]
+				},
+				{
+					"triple": "?keggDrug bio2RDF:xRef ?cas",
+					"source": ["Kegg", "Chebi"]
+				},
+				{
+					"triple": "?keggDrug bio2RDF:mass ?mass",
+					"source": ["Kegg"]
+				},
+                {
+					"triple": "OPTIONAL{ ?drug drugbank:biotransformation ?transform }",
+					"source": ["Drugbank"]
+				}
+				],
+			"executiontime": "19.774793148",
+            "cardinality": "1620"
+			},
+		"MULDER": {
+			"decomposition": [
+                {
+					"triple": "?drug drugbank:affectedOrganism  'Humans and other mammals'.",
+					"source": ["Drugbank"]
+				},
+				{
+					"triple": "?drug drugbank:casRegistryNumber ?cas",
+					"source": ["Drugbank"]
+				},
+				{
+					"triple": "?keggDrug bio2RDF:xRef ?cas",
+					"source": ["Kegg"]
+				},
+				{
+					"triple": "?keggDrug bio2RDF:mass ?mass",
+					"source": ["Kegg"]
+				},
+                {
+					"triple": "OPTIONAL{ ?drug drugbank:biotransformation ?transform }",
+					"source": ["Drugbank"]
+				}
+				],
+			"executiontime": "0.901671171188",
+            "cardinality": "1620"
+		}
+	}
+},
+{
+	"queryName": "SQ4",
+	"query": "PREFIX drugbank: <http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/><br>PREFIX diseasome:<http://www4.wiwiss.fu-berlin.de/diseasome/resource/diseasome/><br> SELECT ?drug ?disease ?name WHERE{<br>?drug drugbank:molecularWeightAverage ?weight.<br>?drug drugbank:possibleDiseaseTarget ?disease.<br>?disease diseasome:name ?name.<br>}",
+	"results": {
+		"FedX": {
+			"decomposition": [
+				{
+					"triple": "?drug drugbank:molecularWeightAverage ?weight",
+					"source": ["Drugbank"]
+				},
+				{
+					"triple": "?drug drugbank:possibleDiseaseTarget ?disease",
+					"source": ["Drugbank"]
+				},
+				{
+					"triple": "?disease diseasome:name ?name",
+					"source": ["diseasome"]
+				}
+				],
+			"executiontime": "4.02295804024",
+            "cardinality": "8120"
+			},
+		"MULDER": {
+			"decomposition": [
+				{
+					"triple": "?drug drugbank:molecularWeightAverage ?weight",
+					"source": ["Drugbank"]
+				},
+				{
+					"triple": "?drug drugbank:possibleDiseaseTarget ?disease",
+					"source": ["Drugbank"]
+				},
+				{
+					"triple": "?disease diseasome:name ?name",
+					"source": ["diseasome"]
+				}
+				],
+			"executiontime": "1.38392996788",
+            "cardinality": "8120"
+		}
+	}
+},
+{
+	"queryName": "SQ5",
+	"query": "PREFIX dailymed: <http://www4.wiwiss.fu-berlin.de/dailymed/resource/dailymed/><br>PREFIX linkedCT: <http://data.linkedct.org/resource/linkedct/><br>PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#><br> SELECT distinct * WHERE{ <br>?intervention a linkedCT:intervention. <br>?intervention linkedCT:intervention_name ?intervention_name. <br> ?intervention linkedCT:intervention_id ?intervention_id.<br>?intervention rdfs:seeAlso ?dailymedDrug.<br>?dailymedDrug dailymed:dosage ?dosage.<br>?dailymedDrug dailymed:description ?description.<br>?dailymedDrug dailymed:inactiveIngredient ?inactiveIngredient.<br>?dailymedDrug dailymed:possibleDiseaseTarget ?possibleDiseaseTarget .>} ",
+	"results": {
+		"FedX": {
+			"decomposition": [
+				{
+					"triple": "?intervention a linkedCT:intervention",
+					"source": ["LinkedCT"]
+				},
+				{
+					"triple": "?intervention linkedCT:intervention_name ?intervention_name.",
+					"source": ["LinkedCT"]
+				},
+				{
+					"triple": "?intervention linkedCT:intervention_id ?intervention_id.",
+					"source": ["LinkedCT"]
+				},
+				{
+					"triple": "?intervention rdfs:seeAlso ?dailymedDrug.",
+					"source": ["LinkedCT", "Affymetrix", "Chebi", "Sider"]
+				},
+				{
+					"triple": "?dailymedDrug dailymed:dosage ?dosage.",
+					"source": ["Dailymed"]
+				},{
+					"triple": "?dailymedDrug dailymed:description ?description.",
+					"source": ["Dailymed"]
+				},
+				{
+					"triple": "?dailymedDrug dailymed:inactiveIngredient ?inactiveIngredient.",
+					"source": ["Dailymed"]
+				},
+				{
+					"triple": "?dailymedDrug dailymed:possibleDiseaseTarget ?possibleDiseaseTarget .",
+					"source": ["Dailymed"]
+				}
+				],
+			"executiontime": "600",
+            "cardinality": "0"
+			},
+		"MULDER": {
+			"decomposition": [
+				{
+					"triple": "?intervention a linkedCT:intervention",
+					"source": ["LinkedCT"]
+				},
+				{
+					"triple": "?intervention linkedCT:intervention_name ?intervention_name.",
+					"source": ["LinkedCT"]
+				},
+				{
+					"triple": "?intervention linkedCT:intervention_id ?intervention_id.",
+					"source": ["LinkedCT"]
+				},
+				{
+					"triple": "?intervention rdfs:seeAlso ?dailymedDrug.",
+					"source": ["LinkedCT"]
+				},
+				{
+					"triple": "?dailymedDrug dailymed:dosage ?dosage.",
+					"source": ["Dailymed"]
+				},{
+					"triple": "?dailymedDrug dailymed:description ?description.",
+					"source": ["Dailymed"]
+				},
+				{
+					"triple": "?dailymedDrug dailymed:inactiveIngredient ?inactiveIngredient.",
+					"source": ["Dailymed"]
+				},
+				{
+					"triple": "?dailymedDrug dailymed:possibleDiseaseTarget ?possibleDiseaseTarget .",
+					"source": ["Dailymed"]
+				}
+				],
+			"executiontime": "78.9390921593",
+            "cardinality": "524694"
+		}
+	}
+},
+]
